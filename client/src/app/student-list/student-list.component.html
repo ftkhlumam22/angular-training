@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-center mt-5 flex-wrap">
+  <table class="table w-50 mx-5">
+    <thead>
+      <tr>
+        <th scope="col">Fullname</th>
+        <th scope="col">Class</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of studentlist$?.data">
+      <tr>
+        <td>{{ item.fullname }}</td>
+        <td>{{ item.class }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="DeleteStudent(item._id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <form (ngSubmit)="AddStudent()">
+    <div class="mb-3">
+      <label for="fullname" class="form-label">Full Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="fullname"
+        [(ngModel)]="studentform.value.fullname"
+        name="fullname"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="class" class="form-label">Class</label>
+      <input
+        type="text"
+        class="form-control"
+        id="class"
+        [(ngModel)]="studentform.value.class"
+        name="class"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
